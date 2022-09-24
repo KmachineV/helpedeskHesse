@@ -3,11 +3,16 @@
 /public/storage
 /storage/*.key
 /vendor
+##ignore this file##
+/target/
+/.idea/
 .env
 .idea/
+.idea
 .env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
