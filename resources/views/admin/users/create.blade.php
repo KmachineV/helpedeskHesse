@@ -73,7 +73,7 @@
 
             <div class="form-group {{ $errors->has('projectid') ? 'has-error' : '' }}">
                 <label for="status">{{ trans('cruds.user.fields.project_id') }}*</label>
-                <select name="projectid" id="projectid" class="form-control select2" required>
+                <select name="projectid" id="projectid" class="form-control select2">
                     @foreach($projects as $id => $project)
                         <option value="{{ $project->id }}" }}>{{$project->name}} - {{$project->code }}  - {{$project->status == 1 ? 'Activo' : 'Finalizado' }}</option>
                     @endforeach

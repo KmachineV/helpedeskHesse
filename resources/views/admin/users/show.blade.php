@@ -20,10 +20,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.name') }}
+                            {{ trans('cruds.user.fields.first_name') }}
                         </th>
                         <td>
-                            {{ $user->name }}
+                            {{ $user->first_name }} {{ $user->last_name }}
                         </td>
                     </tr>
                     <tr>
@@ -34,14 +34,7 @@
                             {{ $user->email }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
-                        </th>
-                        <td>
-                            {{ $user->email_verified_at }}
-                        </td>
-                    </tr>
+
                     <tr>
                         <th>
                             Roles
