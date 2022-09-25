@@ -41,7 +41,7 @@
     <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu">
             <li><a href="#section1">Inicio</a></li>
-            <li class="has-submenu"><a href="#section2">Sobre nosotres</a>
+            <li class="has-submenu"><a href="#section2">Sobre nosotros</a>
                 <ul class="sub-menu">
                     <li><a href="#section5">¿Quienes somos?</a></li>
                     <li><a href="#section2">¿Que hacemos?</a></li>
