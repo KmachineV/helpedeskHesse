@@ -218,7 +218,7 @@ class TicketsController extends Controller
 
         $ticket->load('status', 'priority', 'category', 'comments', 'employee', 'users');
 
-        $images = DB::table('mediaticket')->where('ticket_id','=',$ticket->getQueueableId())->get();
+        $images = DB::table('MediaTicket')->where('ticket_id','=',$ticket->getQueueableId())->get();
 
 
 

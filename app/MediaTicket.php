@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MediaTicket extends Model
 {
 
-    public $table = 'mediaticket';
+    public $table = 'MediaTicket';
     protected $fillable = [
         'url',
         'ticket_id'
