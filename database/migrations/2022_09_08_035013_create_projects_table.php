@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('name')->nullable();
             $table->unsignedBigInteger('commune_id');
             $table->foreign('commune_id')->references('id')->on('communes');
-            $table->unsignedBigInteger('provincie_id');
+            $table->unsignedBigInteger('province_id');
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->unsignedBigInteger('region_id');
             $table->foreign('region_id')->references('id')->on('regions');
