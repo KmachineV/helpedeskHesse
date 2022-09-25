@@ -12,22 +12,22 @@ class UsersTableSeeder extends Seeder
                 'id'             => 1,
                 'first_name'     => 'ADMINISTRADOR',
                 'last_name'      => 'Admin',
-                'email'          => 'admin@admin.com',
+                'email'          => 'kmachine.devv@gmail.com',
                 'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
                 'remember_token' => null,
                 'projectid'      => null,
-                'rut'            => '27114377K'
+                'rut'            => '11111111-1'
 
             ],
             [
                 'id'             => 2,
                 'first_name'     => 'ITO',
                 'last_name'      => 'Ito',
-                'email'          => 'ito@ito.com',
+                'email'          => 'camachoj248@gmail.com',
                 'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
                 'remember_token' => null,
                 'projectid'      => null,
-                'rut'            => '269177993'
+                'rut'            => '27114377-k'
             ],
 
 

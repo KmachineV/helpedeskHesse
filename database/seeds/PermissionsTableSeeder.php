@@ -184,6 +184,67 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '44',
                 'title' => 'dashboard_access',
             ],
+            [
+                'id'    => '45',
+                'title' => 'projects_create',
+            ],
+            [
+                'id'    => '46',
+                'title' => 'projects_access',
+            ],
+            [
+                'id'    => '47',
+                'title' => 'projects_show',
+            ],
+            [
+                'id'    => '48',
+                'title' => 'projects_edit',
+            ],
+            [
+                'id'    => '49',
+                'title' => 'projects_delete',
+            ],
+            [
+                'id'    => '50',
+                'title' => 'employees_create',
+            ],
+            [
+                'id'    => '51',
+                'title' => 'employees_show',
+            ],
+            [
+                'id'    => '52',
+                'title' => 'employees_delete',
+            ],
+            [
+                'id'    => '53',
+                'title' => 'employees_access',
+            ],
+            [
+                'id'    => '54',
+                'title' => 'employees_edit',
+            ],
+            [
+                'id'    => '55',
+                'title' => 'households_create',
+            ],
+            [
+                'id'    => '56',
+                'title' => 'households_show',
+            ],
+            [
+                'id'    => '57',
+                'title' => 'households_edit',
+            ],
+            [
+                'id'    => '58',
+                'title' => 'households_access',
+            ],
+            [
+                'id'    => '59',
+                'title' => 'households_delete',
+            ]
+
         ];
 
         Permission::insert($permissions);
