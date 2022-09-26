@@ -159,15 +159,18 @@
             {{ trans('global.back_to_list') }}
         </a>
 
-        <a href="{{ route('admin.tickets.edit', $ticket->id) }}" class="btn btn-primary">
-            @lang('global.edit') @lang('cruds.ticket.title_singular')
-        </a>
+            @can('user_management_access')
+                <a href="{{ route('admin.tickets.edit', $ticket->id) }}" class="btn btn-primary">
+                    @lang('global.edit') @lang('cruds.ticket.title_singular')
+                </a>
 
-        <a href="{{ route('admin.tickets.pdf', $ticket->id)}}"  class="btn btn-warning">
-            <i class="fas fa-archive nav-icon">
-                Imprimir
-            </i>
-        </a>
+                <a href="{{ route('admin.tickets.pdf', $ticket->id)}}"  class="btn btn-warning">
+                    <i class="fas fa-archive nav-icon">
+                        Imprimir
+                    </i>
+                </a>
+            @endcan
+
 
         <nav class="mb-3">
             <div class="nav nav-tabs">
