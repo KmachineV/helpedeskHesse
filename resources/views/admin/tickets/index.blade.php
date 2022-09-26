@@ -15,6 +15,11 @@
     </div>
 
     <div class="card-body">
+        @if(session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Ticket">
             <thead>
                 <tr>
@@ -127,6 +132,9 @@ $('.card-body').on('change', 'select', function() {
     serverSide: true,
     retrieve: true,
     aaSorting: [],
+    language: {
+          "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+      },
     ajax: {
       url: "{{ route('admin.tickets.index') }}",
       data: {
@@ -188,10 +196,7 @@ $('.card-body').on('change', 'select', function() {
     }
 
     }
-}
-
-
-        ,
+},
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],

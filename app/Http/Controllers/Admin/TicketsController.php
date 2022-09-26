@@ -163,7 +163,7 @@ class TicketsController extends Controller
         }
 
 
-        return redirect()->route('admin.tickets.index');
+        return redirect()->route('admin.tickets.index')->with('status', 'El ticket se ha creado exitosamente');
     }
 
     public function edit(Ticket $ticket)

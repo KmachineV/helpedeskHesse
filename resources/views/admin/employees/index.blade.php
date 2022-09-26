@@ -137,6 +137,9 @@
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'desc' ]],
     pageLength: 100,
+    language: {
+        "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+    },
   });
   $('.datatable-Category:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
