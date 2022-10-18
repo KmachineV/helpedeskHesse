@@ -84,6 +84,39 @@
                     </em>
                 @endif
             </div>
+<!--
+&lt;!&ndash;
+
+            <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                <label for="name">{{ trans('cruds.households.fields.address') }}*</label>
+                <textarea type="text" id="address" name="address" class="form-control"required>    </textarea>
+                @if($errors->has('address'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('address') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.households.fields.name_helper') }}
+                </p>
+            </div>
+
+
+
+            <div class="form-group {{ $errors->has('information') ? 'has-error' : '' }}">
+                <label for="content">Informacion de la direccion</label>
+                <textarea type="text" id="information" name="information" class="form-control" required> </textarea>
+                @if($errors->has('information'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('information') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.households.fields.name_helper') }}
+                </p>
+            </div>
+&ndash;&gt;
+-->
+
 
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                 <label for="password">{{ trans('cruds.user.fields.password') }}</label>
@@ -118,6 +151,8 @@
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>
+
+
         </form>
 
 

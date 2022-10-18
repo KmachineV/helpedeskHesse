@@ -24,11 +24,10 @@
                             </span>
                         </div>
 
-                        <input id="email" name="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
-
-                        @if($errors->has('email'))
+                        <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}" required autocomplete="rut" autofocus>
+                        @if($errors->has('rut'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ $errors->first('rut') }}
                             </div>
                         @endif
                     </div>
