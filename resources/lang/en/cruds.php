@@ -106,8 +106,8 @@ return [
         ],
     ],
     'category'       => [
-        'title'          => 'Categorias',
-        'title_singular' => 'Categoria',
+        'title'          => 'Categorías',
+        'title_singular' => 'Categoría',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
@@ -211,11 +211,11 @@ return [
         'title_singular' => 'Proyecto',
         'fields'         => [
             'id'                  => 'ID',
-            'code'                => 'Codigo',
+            'code'                => 'Código',
             'name'                => 'Nombre',
             'commune'             => 'Comuna',
             'Province'          => 'Provincia',
-            'Region'              => 'Region',
+            'Region'              => 'Región',
             'start_project'        => 'Inicio del proyecto',
             'end_project' => 'Final del proyecto',
             'end_warranty'             => 'Fin de la garantia',

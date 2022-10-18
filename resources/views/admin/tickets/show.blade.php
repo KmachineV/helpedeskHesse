@@ -161,7 +161,7 @@
 
             @can('user_management_access')
                 <a href="{{ route('admin.tickets.edit', $ticket->id) }}" class="btn btn-primary">
-                    @lang('global.edit') @lang('cruds.ticket.title_singular')
+                    Gestionar Ticket
                 </a>
 
                 <a href="{{ route('admin.tickets.pdf', $ticket->id)}}"  class="btn btn-warning">

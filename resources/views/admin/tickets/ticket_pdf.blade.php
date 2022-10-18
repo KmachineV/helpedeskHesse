@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Ticket pdf</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
                         {{ trans('cruds.projects.title_singular') }}
                     </th>
                     <td>
-                        <b> {{ $users->code ?? '' }} - {{ $users->name?? '' }}</b>
+                        <b> {{ $users->code ?? '-' }} - {{ $users->name?? '' }}</b>
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                         {{ trans('cruds.households.fields.address') }}
                     </th>
                     <td>
-                        <b>{{ $houseHold->address ?? 'Sin direccion asiganada'}}</b>
+                        <b>{{ $houseHold->address ?? 'Sin direccion asignada'}}</b>
                     </td>
                 </tr>
                 <tr>
@@ -75,7 +75,7 @@
                         {{ trans('cruds.ticket.fields.status') }}
                     </th>
                     <td>
-                        {{ $ticket->status->name ?? '' }}
+                        {{ $ticket->status->name ?? '-' }}
                     </td>
                 </tr>
                 <tr>
@@ -83,7 +83,7 @@
                         {{ trans('cruds.ticket.fields.priority') }}
                     </th>
                     <td>
-                        {{ $ticket->priority->name ?? '' }}
+                        {{ $ticket->priority->name ?? '-' }}
                     </td>
                 </tr>
                 <tr>
@@ -91,7 +91,7 @@
                         {{ trans('cruds.ticket.fields.category') }}
                     </th>
                     <td>
-                        {{ $ticket->category->name ?? '' }}
+                        {{ $ticket->category->name ?? '-' }}
                     </td>
                 </tr>
                 <tr>
@@ -115,7 +115,7 @@
                         {{ trans('cruds.ticket.fields.assigned_to_user') }}
                     </th>
                     <td>
-                        {{ $ticket->employee->first_name ?? '' }}  {{ $ticket->employee->last_name ?? '' }}
+                        {{ $ticket->employee->first_name ?? '-' }}  {{ $ticket->employee->last_name ?? '' }}
                     </td>
                 </tr>
 
@@ -125,26 +125,34 @@
             </table>
         </div>
 
+    </div>
 
-       <div class="d-inline" style="margin-right: 150px">
-          <b> Firma ITO</b> ______________________________________________
-       </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="d-inline">
-           <b>Firma Propietario </b>______________________________________________
-        </div>
+</div>
+<div style="margin-top: 50px">
+    <div style="display: inline">
+       <span style="margin-right: 200px; margin-left: 40;">
+            ______________________
+       </span>
 
     </div>
 
+    <div style="display: inline">
+         <span>
+            ______________________
+        </span>
+    </div>
+    <span style="margin-right: 340px; margin-left: 40;">Firma ITO</span>
+    <span><b>Firma Propietario</b></span>
 
 </div>
-
-<b>
+<br>
+<br>
+<br>
+<b style="margin-left: 10px">
     Por favor confirmar y firmar donde corresponda.
 </b>
+
+
 
 </body>
 </html>
