@@ -14,10 +14,10 @@ class HomeController
 
         $totalTickets = Ticket::count();
         $openTickets = Ticket::whereHas('status', function($query) {
-            $query->whereName('Open');
+            $query->where('name','!=','Cerrado');
         })->count();
         $closedTickets = Ticket::whereHas('status', function($query) {
-            $query->whereName('Closed');
+            $query->whereName('Cerrado');
         })->count();
 
         return view('home', compact('totalTickets', 'openTickets', 'closedTickets'));
