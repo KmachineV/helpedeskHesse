@@ -284,7 +284,7 @@ class TicketsController extends Controller
         ]);
         $user = auth()->user();
         $comment = $ticket->comments()->create([
-            'author_name'   => $user->first_name. ' ' . $user->first_name,
+            'author_name'   => $user->first_name. ' ' . $user->last_name,
             'author_email'  => $user->email,
             'user_id'       => $user->id,
             'comment_text'  => $request->comment_text
