@@ -14,7 +14,7 @@ class CreateDeleteCascadeComments extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeign('ticket_fk_583774');
+            $table->dropForeign('comments_ticket_id_foreign');
             $table->foreign('ticket_id')->references('id')->on('tickets')
                 ->onDelete('cascade');
         });

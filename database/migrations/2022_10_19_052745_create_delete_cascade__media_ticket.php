@@ -13,7 +13,7 @@ class CreateDeleteCascadeMediaTicket extends Migration
      */
     public function up()
     {
-        Schema::table('mediaticket', function (Blueprint $table) {
+        Schema::table('MediaTicket', function (Blueprint $table) {
             $table->dropForeign('mediaticket_ticket_id_foreign');
             $table->foreign('ticket_id')->references('id')->on('tickets')
                 ->onDelete('cascade');
