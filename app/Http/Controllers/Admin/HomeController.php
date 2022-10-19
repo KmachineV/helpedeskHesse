@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Gate;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use App\Ticket;
 
@@ -20,6 +21,10 @@ class HomeController
             $query->whereName('Cerrado');
         })->count();
 
-        return view('home', compact('totalTickets', 'openTickets', 'closedTickets'));
+        $ticketsNotStatus = $users = DB::table('tickets')
+            ->where('tickets.status_id', '=', null)->count();
+
+
+        return view('home', compact('totalTickets', 'openTickets', 'closedTickets', 'ticketsNotStatus'));
     }
 }

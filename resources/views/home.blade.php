@@ -45,6 +45,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="card text-white bg-dark">
+                                <div class="card-body pb-3">
+                                    <div class="text-value">{{ number_format($ticketsNotStatus) }}</div>
+                                    <div>Tickets sin asignar</div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
