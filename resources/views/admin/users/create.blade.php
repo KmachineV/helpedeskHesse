@@ -46,16 +46,20 @@
             </div>
             <div class="form-group {{ $errors->has('rut') ? 'has-error' : '' }}">
                 <label for="rut">{{ trans('cruds.user.fields.rut') }}*</label>
-                <input type="text" id="rut" name="rut" class="form-control" value="{{ old('rut', isset($user) ? $user->rut : '') }}" required>
+                <input type="text" id="rut" name="rut" placeholder="ej: 11111111-1" class="form-control" value="{{ old('rut', isset($user) ? $user->rut : '') }}" required>
                 @if($errors->has('rut'))
                     <em class="invalid-feedback">
                         {{ $errors->first('rut') }}
                     </em>
                 @endif
-                <p class="helper-block">
+                <p class="helper-block rutHelperError">
                     {{ trans('cruds.user.fields.name_helper') }}
                 </p>
+
             </div>
+            <p id="rutHelperError">
+                {{ trans('cruds.user.fields.name_helper') }}
+            </p>
 
 
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -71,11 +75,16 @@
                 </p>
             </div>
 
-            <div class="form-group {{ $errors->has('projectid') ? 'has-error' : '' }}">
+            <div class="form-group">
+            <input class="check-circle" type="checkbox" value="" id="checkIto"><h5 style="display: inline"> <strong>¿Es Tipo ITO?</strong></h5>
+            </div>
+
+            <div class="form-group {{ $errors->has('projectid') ? 'has-error' : '' }}" id="projectCheck">
                 <label for="status">{{ trans('cruds.user.fields.project_id') }}*</label>
                 <select name="projectid" id="projectid" class="form-control select2">
+                    <option value="">Selecciona</option>
                     @foreach($projects as $id => $project)
-                        <option value="{{ $project->id }}" }}>{{$project->name}} - {{$project->code }}  - {{$project->status == 1 ? 'Activo' : 'Finalizado' }}</option>
+                        <option value="{{ $project->id }} " selected}} >{{$project->name}} - {{$project->code }}  - {{$project->status == 1 ? 'Activo' : 'Finalizado' }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('projectid'))
@@ -136,7 +145,7 @@
                     <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span></label>
                 <select name="roles[]" id="roles" class="form-control select2" multiple="multiple" required>
                     @foreach($roles as $id => $roles)
-                        <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
+                        <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'Selecciona' : '' }}>{{ $roles }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('roles'))
@@ -158,4 +167,53 @@
 
     </div>
 </div>
+
+
+
+@endsection
+@section('scripts')
+    @parent
+    <script>
+        $( "#checkIto" ).on( 'change',function() {
+            if($('#checkIto').is(':checked')){
+                $("#projectCheck").hide();
+            }else{
+                $("#projectCheck").show();
+            }
+        });
+
+        var Fn = {
+            // Valida el rut con su cadena completa "XXXXXXXX-X"
+            validaRut : function (rutCompleto) {
+                rutCompleto = rutCompleto.replace("‐","-");
+                if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                    return false;
+                var tmp 	= rutCompleto.split('-');
+                var digv	= tmp[1];
+                var rut 	= tmp[0];
+                if ( digv == 'K' ) digv = 'k' ;
+
+                return (Fn.dv(rut) == digv );
+            },
+            dv : function(T){
+                var M=0,S=1;
+                for(;T;T=Math.floor(T/10))
+                    S=(S+T%10*(9-M++%6))%11;
+                return S?S-1:'k';
+            }
+        }
+
+
+        $("#rut").on('change', function(){
+            if (Fn.validaRut( $("#rut").val() )){
+                console.log("El rut ingresado es válido :D");
+                document.getElementById('rutHelperError').innerHTML='El RUT ingresado es valido';
+                document.getElementById('rutHelperError').style ="color: green"
+
+            } else {
+                document.getElementById('rutHelperError').innerHTML='El RUT ingresado no es valido';
+                document.getElementById('rutHelperError').style ="color: red"
+            }
+        });
+    </script>
 @endsection

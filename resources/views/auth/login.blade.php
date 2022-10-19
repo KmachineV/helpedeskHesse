@@ -24,7 +24,8 @@
                             </span>
                         </div>
 
-                        <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}" required autocomplete="rut" autofocus>
+
+                        <input id="rut" type="text" placeholder="RUT - ej: 11111111-1" class="form-control @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}" required autocomplete="rut" autofocus>
                         @if($errors->has('rut'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('rut') }}
@@ -37,7 +38,7 @@
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                         </div>
 
-                        <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_password') }}">
+                        <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="Contraseña">
 
                         @if($errors->has('password'))
                             <div class="invalid-feedback">
