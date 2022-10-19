@@ -5,6 +5,7 @@ namespace App;
 use App\Scopes\AgentScope;
 use App\Traits\Auditable;
 use App\Notifications\CommentEmailNotification;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -118,35 +119,29 @@ class Ticket extends Model implements HasMedia
 
     public function sendCommentNotification($comment)
     {
-        $users = \App\User::where(function ($q) {
-                $q->whereHas('roles', function ($q) {
-                    return $q->where('title', 'Agent');
-                })
-                ->where(function ($q) {
-                    $q->whereHas('comments', function ($q) {
-                        return $q->whereTicketId($this->id);
-                    })
-                    ->orWhereHas('tickets', function ($q) {
-                        return $q->whereId($this->id);
-                    });
-                });
-            })
-            ->when(!$comment->user_id, function ($q) {
-                $q->orWhereHas('roles', function ($q) {
-                    return $q->where('title', 'ITO');
-                });
-            })
-            ->when($comment->user, function ($q) use ($comment) {
-                $q->where('id', '!=', $comment->user_id);
-            })
-            ->get();
-        $notification = new CommentEmailNotification($comment);
 
-        Notification::send($users, $notification);
+        $notification = new CommentEmailNotification($comment);
         if($comment->user_id && $this->author_email)
         {
             Notification::route('mail', $this->author_email)->notify($notification);
         }
+
+        $users = DB::table('users')
+            ->join('role_user','users.id','=','role_user.user_id')
+            ->where('role_user.role_id', '=', 2)
+            ->get(['users.email']);
+
+        foreach ($users as $index=>$value){
+
+            $notification = new CommentEmailNotification($comment);
+            if($comment->user_id && $value)
+            {
+                Notification::route('mail', $value->email)->notify($notification);
+            }
+
+        }
+
+
     }
 
 

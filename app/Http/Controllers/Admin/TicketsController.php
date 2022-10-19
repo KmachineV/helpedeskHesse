@@ -231,8 +231,11 @@ class TicketsController extends Controller
             ->join('communes','projects.commune_id',"=",'communes.id')
             ->where('users.id', '=', $ticket->user_id)->get()->first();
 
+        $comments = DB::table('comments')
+            ->where('user_id', '=', $ticket->user_id)->get();
 
-        return view('admin.tickets.show', compact('ticket', 'houseHold', 'users', 'images'));
+
+        return view('admin.tickets.show', compact('ticket', 'houseHold', 'users', 'images', 'comments' ));
     }
 
     public function destroy(Ticket $ticket)
