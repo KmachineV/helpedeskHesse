@@ -37,6 +37,7 @@ class CommentsController extends Controller
 
     public function store(StoreCommentRequest $request)
     {
+        dd($request);
         $comment = Comment::create($request->all());
 
         return redirect()->route('admin.comments.index');

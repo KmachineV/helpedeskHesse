@@ -129,7 +129,7 @@
                             @forelse ($comments as $comment)
                                 <div class="row">
                                     <div class="col">
-                                        <p class="font-weight-bold">{{ $comment->author_email}} ({{ date('d-m-y', strtotime($comment->created_at)) }})</p>
+                                        <p class="font-weight-bold">{{ $comment->author_name}} ({{ date('d-m-y', strtotime($comment->created_at)) }})</p>
                                         <p>{{ $comment->comment_text }}</p>
                                     </div>
                                 </div>

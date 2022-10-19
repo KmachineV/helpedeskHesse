@@ -138,8 +138,6 @@ class TicketsController extends Controller
 
         $ticket = Ticket::create($request->all());
 
-
-
         if($request->hasFile('attachments')){
 
             $images = $request->file('attachments');
@@ -220,8 +218,6 @@ class TicketsController extends Controller
 
         $images = DB::table('MediaTicket')->where('ticket_id','=',$ticket->getQueueableId())->get();
 
-
-
         $houseHold = DB::table('households')->where('households.user_id','=',$ticket->user_id)->get()->first();
 
         $users = DB::table('users')
@@ -232,7 +228,7 @@ class TicketsController extends Controller
             ->where('users.id', '=', $ticket->user_id)->get()->first();
 
         $comments = DB::table('comments')
-            ->where('user_id', '=', $ticket->user_id)->get();
+            ->where('ticket_id', '=', $ticket->id)->get();
 
 
         return view('admin.tickets.show', compact('ticket', 'houseHold', 'users', 'images', 'comments' ));
@@ -288,7 +284,7 @@ class TicketsController extends Controller
         ]);
         $user = auth()->user();
         $comment = $ticket->comments()->create([
-            'author_name'   => $user->name,
+            'author_name'   => $user->first_name. ' ' . $user->first_name,
             'author_email'  => $user->email,
             'user_id'       => $user->id,
             'comment_text'  => $request->comment_text
